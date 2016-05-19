@@ -1,0 +1,5 @@
+-Readability
+-Make pathing actually work
+-Progression
+-Win/loss?
+-Fighting (Finish pathing first)
