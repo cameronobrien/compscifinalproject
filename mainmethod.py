@@ -25,7 +25,7 @@ def explore_branch(choice):
     current_step = 0
 
     # do game stuff for this specific branch
-    while alive is True:
+    while alive:
         alive = make_choice(current_step, dialogue_tree[current_step])
         current_step += 1
 
@@ -41,7 +41,7 @@ def make_choice(current_step, dialogue_tree_item):
     """
     # present decision to user
     # have the user make a decision
-    direction = str(input("Do you go left or right? [L/R]:")).upper
+    direction = input("Which direction do you go? [L/R]L").upper()
     return direction
 
 
@@ -59,5 +59,5 @@ print(title_bar + title + title_bar)
 choice = None  # non-valid default choice
 print(initial_decision)
 while choice not in correct_choices:
-    choice = str(input("Which one do you go to? [L/C/S]: ")).upper()  # converts input to uppercase
+    choice = input("Which one do you go to? [{}]: ".format("/".join(correct_choices))).upper()  # uppercase conversion
 explore_branch(choice)
