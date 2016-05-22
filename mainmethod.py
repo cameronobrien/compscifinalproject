@@ -49,7 +49,14 @@ def make_choice(current_step, choice):
         direction = input("Which direction do you go? [{}]?".format("/".join(locations))).strip()
     return direction
 
+def generate_broadcast_nodes():
+    node_locations = []
 
+    locations = ["barracks","bathroom","bridge","cq","dininghall","dropship","fighterbay","logi","reactor","shiphangar"]
+
+    for i in range(3):
+        node_locations.append(locations.pop(random.randint(0,len(locations)-1)))
+    return node_locations
 
 
 # Constants
@@ -63,6 +70,7 @@ correct_choices = ['logi', 'cq', 'shiphangar']
 print(title_bar + title + title_bar)
 choice = None  # non-valid default choice
 print(initial_decision)
+generate_broadcast_nodes()
 while choice not in correct_choices:
     choice = input("Which one do you go to? [{}]: ".format("/".join(correct_choices))).strip()  # uppercase conversion
 explore_branch(choice)
