@@ -1,3 +1,0 @@
-barracks
-dropship
-shiphangar

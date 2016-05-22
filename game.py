@@ -1,4 +1,6 @@
 import random
+import configparser
+
 
 def get_dialogue_text(choice):
     """
@@ -35,6 +37,7 @@ def make_choice(current_step, choice,):
         :param dialogue_tree_item(str): String containing the dialogue for the
                                         current step and the choice the user can make
         :returns: bool, alive or dead (true or false)
+
     """
 
     file_extension = ".txt"
@@ -66,11 +69,24 @@ title_bar = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 title = "\nWelcome aboard the UNSC Aurora, the only surviving destroyer in the entire UNSC fleet.\n"
 initial_decision = "You are faced with 3 signs. One leads to the captains quarters, one leads to the logistics bay," \
 " and the other to the ship hangar.\n"
-correct_choices = ['logi', 'cq', 'shiphangar']
+
 print(title_bar + title + title_bar)
-choice = None  # non-valid default choice
 print(initial_decision)
-generate_broadcast_nodes()
+
+nodes = generate_broadcast_nodes()
+cp_dialogue  = configparser.ConfigParser()
+cp_locations = configparser.ConfigParser()
+cp_dialogue.read("dialogue.ini")
+cp_locations.read("locations.ini")
+
+print(cp_locations.sections())
+print(cp_dialogue.sections())
+print(cp_locations['cq']['1'])
+print(cp_dialogue['cq']['1'])
+print()
+
+choice = None  # non-valid default choice
+correct_choices = ['logi', 'cq', 'shiphangar']
 while choice not in correct_choices:
     choice = input("Which one do you go to? [{}]: ".format("/".join(correct_choices))).strip()  # uppercase conversion
 explore_branch(choice)
