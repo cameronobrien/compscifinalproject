@@ -29,7 +29,7 @@ def explore_branch(choice):
         current_step += 1
 
 
-def make_choice(current_step, choice):
+def make_choice(current_step, choice,):
     """
         :param current_step(int): Which dialogue item the player is currently on
         :param dialogue_tree_item(str): String containing the dialogue for the
