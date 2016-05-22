@@ -69,7 +69,7 @@ correct_choices = ['logi', 'cq', 'shiphangar']
 print(title_bar + title + title_bar)
 choice = None  # non-valid default choice
 print(initial_decision)
-generate_broadcast_nodes()
+nodes = generate_broadcast_nodes()
 while choice not in correct_choices:
     choice = input("Which one do you go to? [{}]: ".format("/".join(correct_choices))).strip()  # uppercase conversion
 explore_branch(choice)
